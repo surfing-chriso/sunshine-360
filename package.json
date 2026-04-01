@@ -1,0 +1,9 @@
+{
+  "name": "sunshine-360",
+  "version": "1.0.0",
+  "description": "Sunshine 360° Panoramic Views",
+  "scripts": {
+    "dev": "npx -y serve public -l 3001",
+    "start": "npx -y serve public -l 3001"
+  }
+}
