@@ -144,17 +144,28 @@
       if (index < 1 || index > TOTAL_IMAGES || index === currentIndex) return;
       currentIndex = index;
 
-      // Update viewer
-      viewer.loadScene('default', undefined, undefined, undefined, {
+      // Destroy current viewer and create new one
+      if (viewer) {
+        viewer.destroy();
+      }
+      viewer = pannellum.viewer('panorama', {
         type: 'equirectangular',
         panorama: `${IMAGE_BASE}/${index}.jpg`,
         autoLoad: true,
         showControls: false,
         showFullscreenCtrl: false,
         showZoomCtrl: false,
+        mouseZoom: true,
         hfov: 110,
+        minHfov: 50,
+        maxHfov: 120,
         autoRotate: -1.5,
         autoRotateInactivityDelay: 5000,
+        friction: 0.15,
+        compass: false,
+        draggable: true,
+        disableKeyboardCtrl: false,
+        crossOrigin: 'anonymous',
       });
 
       // Update UI
